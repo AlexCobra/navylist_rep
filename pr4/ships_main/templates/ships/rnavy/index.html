@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>R_NAVY</title>
+    </head>
+
+    <body>
+        <h1>Ships of the Royal Navy</h1>
+
+        {% if ship_list %}
+            <ul>
+                {% for ship_main in ship_list %}
+                <li>{{ ship_main.name }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <strong>There are no ships present.</strong>
+        {% endif %}
+
+    </body>
+</html>
+

@@ -1,0 +1,13 @@
+{% load render_table from django_table2 %}
+<!DOCTYPE html>
+<html>
+    <head>
+	<link rel="stylesheet" href="{{ STATIC_URL }}django_tables2/themes/paleblue/css/screen.css" />
+        <title>RN ships</title>
+    </head>
+
+    <body>
+        {% render_table shipinfo %}
+    </body>
+</html>
+
