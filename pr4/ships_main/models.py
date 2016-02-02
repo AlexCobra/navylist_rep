@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.urlresolvers import reverse
 
 class ship_main(models.Model):
         name = models.CharField(max_length=128, default='')
@@ -31,6 +32,9 @@ class ship_main(models.Model):
     
         def __str__(self):              # __unicode__ on Python 2
             return (self.unique_name)
+
+        def get_absolute_url(self):
+            return reverse('shipinfo', kwargs={'pk': self.pk})
 
 
 class Builder(models.Model):
