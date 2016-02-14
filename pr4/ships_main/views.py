@@ -9,7 +9,7 @@ class ShipCreate(CreateView):
         fields = ['name', 'unique_name', 'builder', 'ordered', 'laid_down', 'launched', 'fate', 'ship_class', 'ship_type', 'displacement_norm', 'displacement_deep', 'length', 'beam', 'draught', 'power', 'propulsion', 'speed_surf', 'speed_sub', 'endurance', 'crew_peace', 'crew_war', 'commanders', 'armament', 'armour', 'devices', 'story', 'pictures']
 class ShipUpdate(UpdateView):
         model = ship_main
-		fields = ['name', 'unique_name', 'builder', 'ordered', 'laid_down', 'launched', 'fate', 'ship_class', 'ship_type', 'displacement_norm', 'displacement_deep', 'length', 'beam', 'draught', 'power', 'propulsion', 'speed_surf', 'speed_sub', 'endurance', 'crew_peace', 'crew_war', 'commanders', 'armament', 'armour', 'devices', 'story', 'pictures']
+        fields = ['name', 'unique_name', 'builder', 'ordered', 'laid_down', 'launched', 'fate', 'ship_class', 'ship_type', 'displacement_norm', 'displacement_deep', 'length', 'beam', 'draught', 'power', 'propulsion', 'speed_surf', 'speed_sub', 'endurance', 'crew_peace', 'crew_war', 'commanders', 'armament', 'armour', 'devices', 'story', 'pictures']
 class ShipDelete(DeleteView):
         model = ship_main
         success_url = reverse_lazy('shipinfo')

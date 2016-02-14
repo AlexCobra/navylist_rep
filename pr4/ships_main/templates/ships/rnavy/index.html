@@ -17,9 +17,15 @@
             <strong>There are no ships present.</strong>
         {% endif %}
 		<br><br>
-		<a href="../ship_main_form">Create a Ship</a>
+		<a href="{% url 'ship-add' %}">Create a Ship</a>
 
-		<a href="ship_main_confirm_delete">Delete Ship</a>
+			{% if ship_main %}
+
+				<a href="-update' %}">Modify Ship</a>
+		
+				<a href="{% url 'ships_main:ship-delete' %}">Delete Ship</a>
+
+			{% endif %}
     </body>
 </html>
 
