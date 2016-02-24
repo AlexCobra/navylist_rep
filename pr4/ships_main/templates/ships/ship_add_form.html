@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MODIFY SHIP ATTRIBUTES</title>
+	</head>
+
+	<body>
+		<h2>MODIFY SHIP'S DETAILS</h2>
+
+		<form id="modify_ship" method="POST">
+
+			{% csrf_token %}
+				{{ form.as_p }}
+				<br>	
+
+			<input type="submit" name="submit" value="Modify_Ship" />
+		</form>
+	</body>
+</html>

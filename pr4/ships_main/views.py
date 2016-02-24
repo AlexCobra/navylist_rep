@@ -1,21 +1,37 @@
 from django.shortcuts import render, render_to_response
 from django.template import RequestContext
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
+#from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 from ships_main.models import ship_main
+from ships_main.forms import ShipmainForm
 
-class ShipCreate(CreateView):
-        model = ship_main
-        fields = ['name', 'unique_name', 'builder', 'ordered', 'laid_down', 'launched', 'fate', 'ship_class', 'ship_type', 'displacement_norm', 'displacement_deep', 'length', 'beam', 'draught', 'power', 'propulsion', 'speed_surf', 'speed_sub', 'endurance', 'crew_peace', 'crew_war', 'commanders', 'armament', 'armour', 'devices', 'story', 'pictures']
-class ShipUpdate(UpdateView):
-        model = ship_main
-        fields = ['name', 'unique_name', 'builder', 'ordered', 'laid_down', 'launched', 'fate', 'ship_class', 'ship_type', 'displacement_norm', 'displacement_deep', 'length', 'beam', 'draught', 'power', 'propulsion', 'speed_surf', 'speed_sub', 'endurance', 'crew_peace', 'crew_war', 'commanders', 'armament', 'armour', 'devices', 'story', 'pictures']
-class ShipDelete(DeleteView):
-        model = ship_main
-        success_url = reverse_lazy('shipinfo')
+def add_ship(request):
+	if request.method == 'POST':
+		form = ShipmainForm(request.POST)
+
+		if form.is_valid():
+			form.save(commit=True)
+
+			return rnavy_index(request)
+		else: 
+			print (form.errors)
+
+	else:
+		form = ShipmainForm()
+	return render (request, 'ships/ship_add_form.html', {'form': form})
+
+#class ShipCreate(CreateView):
+#        model = ship_main
+#        fields = ['name', 'unique_name', 'builder', 'ordered', 'laid_down', 'launched', 'fate', 'ship_class', 'ship_type', 'displacement_norm', 'displacement_deep', 'length', 'beam', 'draught', 'power', 'propulsion', 'speed_surf', 'speed_sub', 'endurance', 'crew_peace', 'crew_war', 'commanders', 'armament', 'armour', 'devices', 'story', 'pictures']
+#class ShipUpdate(UpdateView):
+#        model = ship_main
+#        fields = ['name', 'unique_name', 'builder', 'ordered', 'laid_down', 'launched', 'fate', 'ship_class', 'ship_type', 'displacement_norm', 'displacement_deep', 'length', 'beam', 'draught', 'power', 'propulsion', 'speed_surf', 'speed_sub', 'endurance', 'crew_peace', 'crew_war', 'commanders', 'armament', 'armour', 'devices', 'story', 'pictures']
+#class ShipDelete(DeleteView):
+#        model = ship_main
+#        success_url = reverse_lazy('shipinfo')
         
-def shipinfo(request):
-	return render(request, 'ships/rnavy/shipinfo.html', {"shipinfo":shipinfo.objects.all()})
+#def shipinfo(request):
+#	return render(request, 'ships/rnavy/shipinfo.html', {"shipinfo":shipinfo.objects.all()})
 
 #def ship(request, ship_name_url):
 #	context = RequestContext(request)
